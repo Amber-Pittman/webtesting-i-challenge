@@ -23,10 +23,14 @@ describe("Enhancer Testing", () => {
         }
     })
 
-    it("fails()", () => {
-
+    it("fails()", (item) => {
         if (item.enhancement < 15) {
-            expect(item.durability)
+            expect(enhancer.fail(item).durability).toEqual(item.durability - 5)
+        } else if (item.enhancement >= 15) {
+            expect(enhancer.fail(item).durability).toEqual(item.durability - 10)
+        } else (item.enhancement > 16) {
+            expect(enhancer.fail(item).enhancement).toEqual(item.enhancement - 1)
         }
     })
+
 })
