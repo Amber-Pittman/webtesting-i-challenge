@@ -2,7 +2,7 @@ const enhancer = require('./enhancer.js');
 // test away!
 
 const item = {
-    name: "Amber",
+    name: "Enhanced Item",
     durability: 80,
     enhancement: 19
 }
@@ -19,7 +19,14 @@ describe("Enhancer Testing", () => {
         if (item.enhancement === 20) {
             expect(newItem.enhancement).toEqual(ogEnhancement)
         } else {
-            expect(newItem.enhancement).toEqual(ogEnhancement + 1)
+            expect(newItem.enhancement).toBeLessThanOrEqual(ogEnhancement)
+        }
+    })
+
+    it("fails()", () => {
+
+        if (item.enhancement < 15) {
+            expect(item.durability)
         }
     })
 })

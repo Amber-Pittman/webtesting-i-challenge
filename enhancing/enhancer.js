@@ -3,6 +3,15 @@ function succeed(item) {
 }
 
 function fail(item) {
+  if (item.enhancement === 20) {
+    return { ...item }
+  } else {
+    return { 
+      ...item,
+      enhancement: item.enhancement + 1
+    }
+  }
+
   return { ...item };
 }
 
