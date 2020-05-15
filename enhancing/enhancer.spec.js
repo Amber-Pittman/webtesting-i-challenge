@@ -8,29 +8,29 @@ const item = {
 }
 
 describe("Enhancer Testing", () => {
-    it("repair()", () => {
+    it("repair", () => {
         expect(enhancer.repair(item).durability).toEqual(100)
     })
 
-    it("success()", () => {
+    it("success", () => {
         const newItem = enhancer.succeed(item)
         const ogEnhancement = item.enhancement
 
         if (item.enhancement === 20) {
             expect(newItem.enhancement).toEqual(ogEnhancement)
         } else {
-            expect(newItem.enhancement).toBeLessThanOrEqual(ogEnhancement)
+            expect(newItem.enhancement).toBeLessThanOrEqual(ogEnhancement + 1)
         }
     })
 
-    it("fails()", (item) => {
+    it("fails", () => {
         if (item.enhancement < 15) {
             expect(enhancer.fail(item).durability).toEqual(item.durability - 5)
         } else if (item.enhancement >= 15) {
             expect(enhancer.fail(item).durability).toEqual(item.durability - 10)
-        } else (item.enhancement > 16) {
-            expect(enhancer.fail(item).enhancement).toEqual(item.enhancement - 1)
+        } else (item.enhancement > 16);{
+            expect(enhancer.fail(item).enhancement).toBeLessThan(item.enhancement + 1)
         }
-    })
+    }) 
 
 })
